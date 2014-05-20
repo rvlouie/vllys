@@ -1,0 +1,428 @@
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+body {
+	color: black;
+	overflow: none;
+}
+
+
+p {
+	font-family: 'Helvetica', "Arial", sans-serif;
+	font-size: 35px;
+	margin: 20px 50px;
+}
+
+ul, ol {
+	margin: 50px;
+}
+
+li {
+	font-family: 'Helvetica', "Arial", sans-serif;
+	font-size: 30px;
+}
+
+.section {
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+
+.container {
+	width: 100%;
+	background-color: white;
+	box-shadow: 5px 5px 35px #4f4f4f;
+}
+
+.intro {
+	background-color: black;
+}
+
+.section-divider {
+	background-color: #1d7db3;
+}
+
+.intro-logo {
+	background-image: url('../assets/intro-logo.png');
+	height: 200px;
+	width: 700px;
+}
+
+.how-indaba-works {
+	background-image: url('../assets/how-indaba-works.png');
+	height: 200px;
+	width: 974px;	
+}
+
+.examples {
+	background-image: url('../assets/examples.png');
+	height: 200px;
+	width: 580px;	
+}
+
+.opportunity {
+	background-image: url('../assets/opportunity.png');
+	height: 200px;
+	width: 666px;	
+}
+
+.our-foundation {
+	background-image: url('../assets/our-foundation.png');
+	height: 200px;
+	width: 800px;		
+}
+
+.indaba-logo {
+	background-image: url('../assets/indaba-logo.png');
+	height: 200px;
+	width: 720px;	
+}
+
+.section-slide {
+	position: relative;
+	display: block;
+	margin: auto;
+	background-repeat: no-repeat;
+}
+
+.slide-image {
+	background-repeat: no-repeat;	
+	margin: auto;
+}
+
+.content {
+	position: relative;
+	float: left;
+	width: 47%;
+}
+
+.content-right {
+	position: relative;
+	float: right;
+	width: 47%;
+}
+
+.content-center {
+	text-align: center;
+}
+
+.content p:first-child, .content-right p:first-child {
+	margin-top: 50px;
+}
+
+.content p:last-child, .content-right p:last-child {
+	margin-bottom: 50px;
+}
+
+.images {
+	position: relative;
+	float: left;
+	margin: 50px;
+	width: 45%;
+}
+
+.blue-text {
+	color: #1d7db3;
+}
+
+.bold-text {
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.bio {
+	clear: both;
+}
+
+.bio-left, .bio-right {
+	float: left;
+}
+
+.bio-right {
+	width: 75%;
+}
+
+.bio-pic {
+	height: 89px;
+	width: 89px;
+	margin: 0 20px;
+}
+
+.jj {
+	background-image: url('../assets/jj.jpg');
+}
+
+.dan {
+	background-image: url('../assets/dz.jpg');
+}
+
+.mantis {
+	background-image: url('../assets/mantis.jpg');
+}
+
+.bio p {
+	font-size: 18px;
+	float: left;
+	margin: 0;
+}
+
+.bio img {
+	float: left;
+}
+
+.bio p:last-child {
+	margin-bottom: 50px;
+}
+
+.tag {
+	clear: both;
+}
+
+#slide-1 {
+	background-image: url('../assets/bg_1.jpg');
+}
+
+#slide-2 {
+	background-image: url('../assets/bg_2.jpg');
+}
+
+.slide-2-image {
+	background-image: url('../assets/slide-2-pic-1.jpg');
+	width: 514px;
+	height: 531px; 
+}
+
+#slide-3 {
+	background-image: url('../assets/bg_3.jpg');
+}
+
+.slide-3-logos {
+	background-image: url('../assets/slide_3_logos.jpg');
+	width: 505px;
+	height: 390px; 
+}
+
+#slide-4 {
+	background-image: url('../assets/bg_4.jpg');
+}
+
+#slide-5 {
+	background-image: url('../assets/bg_5.jpg');
+}
+
+.slide-5-image {
+	background-image: url('../assets/slide-4.jpg');
+	width: 576px;
+	height: 410px; 	
+}
+
+#slide-6 {
+	background-image: url('../assets/bg_6.jpg');
+}
+
+.slide-6-image {
+	background-image: url('../assets/slide-6.jpg');
+	width: 644px;
+	height: 388px; 	
+}
+
+#slide-7 {
+	background-image: url('../assets/bg_7.jpg');
+}
+
+.slide-7-image {
+	background-image: url('../assets/slide-7.jpg');
+	width: 557px;
+	height: 533px; 	
+}
+
+#slide-8 {
+	background-image: url('../assets/bg_8.jpg');
+}
+
+.slide-8-image {
+	background-image: url('../assets/slide-8.jpg');
+	width: 546px;
+	height: 565px; 	
+}
+
+#slide-9 {
+	background-image: url('../assets/bg_9.jpg');
+}
+
+.slide-9-image {
+	background-image: url('../assets/slide-9-pic-1.jpg');
+	width: 511px;
+	height: 472px; 	
+}
+
+#slide-10 {
+	background-image: url('../assets/bg_10.jpg');
+}
+
+#slide-11 {
+	background-image: url('../assets/bg_11.jpg');
+}
+
+.slide-11-image {
+	background-image: url('../assets/slide-11.jpg');
+	width: 412px;
+	height: 448px; 	
+}
+
+#slide-12 {
+	background-image: url('../assets/bg_12.jpg');
+}
+
+.slide-12-image {
+	background-image: url('../assets/slide-12.jpg');
+	width: 474px;
+	height: 409px; 	
+}
+
+#slide-13 {
+	background-image: url('../assets/bg_13.jpg');
+}
+
+#slide-14 {
+	background-image: url('../assets/bg_14.jpg');
+}
+
+#slide-15 {
+	background-image: url('../assets/bg_15.jpg');
+}
+
+#slide-16 {
+	background-image: url('../assets/bg_16.jpg');
+}
+
+.slide-16-image {
+	background-image: url('../assets/slide-16.jpg');
+	width: 641px;
+	height: 308px; 	
+}
+
+#slide-17 {
+	background-image: url('../assets/bg_17.jpg');
+}
+
+.slide-17-image {
+	background-image: url('../assets/slide-17.jpg');
+	width: 470px;
+	height: 628px; 	
+}
+
+#slide-18 {
+	background-image: url('../assets/bg_18.jpg');
+}
+
+.slide-18-image {
+	background-image: url('../assets/slide-18.jpg');
+	width: 808px;
+	height: 469px; 	
+}
+
+#slide-19 {
+	background-image: url('../assets/bg_19.jpg');
+}
+
+#slide-20 {
+	background-image: url('../assets/bg_20.jpg');
+}
+
+.slide-20-image {
+	background-image: url('../assets/slide-20.jpg');
+	width: 1167px;
+	height: 324px; 	
+}
+
+#slide-21 {
+	background-image: url('../assets/bg_21.jpg');
+}
+
+.slide-21-image {
+	background-image: url('../assets/slide-21.jpg');
+	width: 1194px;
+	height: 457px; 	
+}
+
+#slide-22 {
+	background-image: url('../assets/bg_22.jpg');
+}
+
+.slide-22-image {
+	background-image: url('../assets/slide-22.jpg');
+	width: 1292px;
+	height: 568px; 	
+}
+
+#slide-23 {
+	background-image: url('../assets/bg_23.jpg');
+}
+
+#slide-24 {
+	background-image: url('../assets/bg_24.jpg');
+}
+
+#slide-25 {
+	background-image: url('../assets/bg_25.jpg');
+}
+
+.links {
+	background: none;
+}
+
+.link-block {
+	width: 33%;
+	float: left;
+}
+
+.link-position {
+	margin: 20px auto;
+	position: relative;
+	width: 350px;
+	height: 300px;
+}
+
+.link-position a {
+	font-size: 14px;
+	color: white;
+	text-decoration: none;
+}
+
+.link-box {
+	display: block;
+	position: absolute;
+	background-color: #1d7db3;
+	bottom: 0;
+	width: 100%;
+	padding: 10px;
+}
+
+.dan-colbert {
+	background-image: url('../assets/dan-colbert.jpg');
+}
+
+.indabasync {
+	background-image: url('../assets/indabasync.jpg');
+}
+
+.opportunities {
+	background-image: url('../assets/opportunities.jpg');
+}
+
+.suite-268 {
+	background-image: url('../assets/suite268.jpg');
+}
+
+.client-testimonials {
+	background-image: url('../assets/client-testimonials.jpg');
+}
+
+.user-testimonials {
+	background-image: url('../assets/user-testimonials.jpg');
+}
