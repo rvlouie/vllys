@@ -4,16 +4,29 @@
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 
+html,
 body {
+  display: block;
+  height: 100%;
+}
+
+body {
+  width: 100%;
 	color: black;
-	overflow: none;
 }
 
 
 p {
 	font-family: 'Helvetica', "Arial", sans-serif;
-	font-size: 35px;
 	margin: 20px 50px;
+}
+
+p:first-child {
+  margin-top: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
 }
 
 ul, ol {
@@ -22,27 +35,30 @@ ul, ol {
 
 li {
 	font-family: 'Helvetica', "Arial", sans-serif;
-	font-size: 30px;
 }
 
-.section {
+.slide {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
 	position: relative;
+  overflow: hidden;
 }
 
-.container {
+.slide .container {
 	width: 100%;
 	background-color: white;
-	box-shadow: 5px 5px 35px #4f4f4f;
+	box-shadow: 0 0 50px -5px #000;
+  padding: 40px 10px;
+  overflow: hidden;
 }
 
-.intro {
+.slide .container.intro {
 	background-color: black;
+	box-shadow: 0 0 50px -5px #FFF;
 }
 
-.section-divider {
+.slide .container.section-divider {
 	background-color: #1d7db3;
 }
 
@@ -92,37 +108,37 @@ li {
 .slide-image {
 	background-repeat: no-repeat;	
 	margin: auto;
+  max-width: 100%;
+  background-size: contain;
 }
 
 .content {
 	position: relative;
 	float: left;
-	width: 47%;
+	width: 50%;
 }
 
 .content-right {
 	position: relative;
 	float: right;
-	width: 47%;
+	width: 50%;
 }
 
 .content-center {
 	text-align: center;
 }
 
-.content p:first-child, .content-right p:first-child {
-	margin-top: 50px;
-}
-
-.content p:last-child, .content-right p:last-child {
-	margin-bottom: 50px;
-}
-
 .images {
 	position: relative;
 	float: left;
-	margin: 50px;
-	width: 45%;
+	margin: 0 2%;
+	width: 46%;
+}
+
+.content-center + .images {
+  float: none;
+  width: 100%;
+  margin-top: 20px;
 }
 
 .blue-text {
@@ -130,7 +146,6 @@ li {
 }
 
 .bold-text {
-	font-size: 40px;
 	font-weight: bold;
 }
 
@@ -165,7 +180,6 @@ li {
 }
 
 .bio p {
-	font-size: 18px;
 	float: left;
 	margin: 0;
 }
@@ -389,7 +403,6 @@ li {
 }
 
 .link-position a {
-	font-size: 14px;
 	color: white;
 	text-decoration: none;
 }
@@ -425,4 +438,117 @@ li {
 
 .user-testimonials {
 	background-image: url('../assets/user-testimonials.jpg');
+}
+
+
+
+
+.container p {
+	font-size: 35px;
+}
+
+.container li {
+  font-size: 30px;
+}
+
+.container .bold-text {
+	font-size: 40px;
+}
+
+.container .bio p {
+	font-size: 18px;
+}
+
+.container .link-position a {
+	font-size: 14px;
+}
+
+
+@media (max-width: 1600px) {
+
+  .container p {
+    font-size: 28px;
+  }
+
+  .container li {
+    font-size: 26px;
+  }
+
+  .container .bold-text {
+    font-size: 30px;
+  }
+
+  .container .bio p {
+    font-size: 20px;
+  }
+
+  .container .link-position a {
+    font-size: 16px;
+  }
+}
+
+
+
+@media (max-width: 800px) {
+
+  .slide {
+	  position: static !important;
+	  margin: 0 0 40px 0 !important;
+	  height: auto !important;
+	  padding-top: 400px;
+	  background-position: top center;
+  }
+  
+  .slide .container {
+	  position: static !important;
+	  margin: 0 !important;
+	  max-height: none;
+    padding: 40px 20px;
+  }
+
+  .slide .images {
+    float: none;
+    margin: 20px 0px;
+    width: 100%;
+  }
+	
+  .slide .content,
+  .slide .content-right {
+    float: none;
+    margin: 20px 0 0;
+    width: 100%;
+  }
+
+  .slide .slide-image {
+    background-size: contain;
+  }
+
+  .slide .content + .images {
+    margin-top: 40px;
+  } 
+
+  .slide .link-position {
+    width: 95%;
+  }  
+
+  .container p {
+    font-size: 20px;
+    margin: 20px 10px;
+  }
+
+  .container li {
+    font-size: 18px;
+  }
+
+  .container .bold-text {
+    font-size: 24px;
+  }
+
+  .container .bio p {
+    font-size: 16px;
+  }
+
+  .container .link-position a {
+    font-size: 12px;
+  }
 }
