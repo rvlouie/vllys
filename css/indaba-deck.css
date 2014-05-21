@@ -48,7 +48,7 @@ li {
 .slide .container {
 	width: 100%;
 	background-color: white;
-	box-shadow: 0 0 50px -5px #000;
+	box-shadow: 0 0 75px -5px #000;
   padding: 40px 10px;
   overflow: hidden;
 }
@@ -137,23 +137,21 @@ li {
 
 .content-center + .images {
   float: none;
-  width: 100%;
+  width: auto;
   margin-top: 20px;
 }
 
-.blue-text {
-	color: #1d7db3;
-}
-
-.bold-text {
-	font-weight: bold;
+.management-team {
+  margin: 30px 20px 0;
 }
 
 .bio {
 	clear: both;
+  overflow: hidden;
 }
 
-.bio-left, .bio-right {
+.bio-left,
+.bio-right {
 	float: left;
 }
 
@@ -444,7 +442,7 @@ li {
 
 
 .container p {
-	font-size: 35px;
+	font-size: 34px;
 }
 
 .container li {
@@ -463,31 +461,66 @@ li {
 	font-size: 14px;
 }
 
+.container .blue-text {
+	color: #1d7db3;
+  font-size: 36px;
+  line-height: 1.25em;
+}
+
+.container .bold-text {
+	font-weight: bold;
+}
+
+
 
 @media (max-width: 1600px) {
 
   .container p {
-    font-size: 28px;
-  }
-
-  .container li {
     font-size: 26px;
   }
 
+  .container li {
+    font-size: 24px;
+  }
+
   .container .bold-text {
-    font-size: 30px;
+    font-size: 28px;
   }
 
   .container .bio p {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .container .link-position a {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 
 
+@media (max-width: 800px),
+@media (max-height: 800px) {
+
+  .container p {
+    font-size: 20px;
+    margin: 20px 10px;
+  }
+
+  .container li {
+    font-size: 18px;
+  }
+
+  .container .bold-text {
+    font-size: 24px;
+  }
+
+  .container .bio p {
+    font-size: 16px;
+  }
+
+  .container .link-position a {
+    font-size: 12px;
+  }
+}
 
 @media (max-width: 800px) {
 
@@ -497,6 +530,12 @@ li {
 	  height: auto !important;
 	  padding-top: 400px;
 	  background-position: top center;
+  }
+
+  .section-slide {
+    margin: 0 20px;
+    width: auto;
+    background-size: contain;
   }
   
   .slide .container {
@@ -531,24 +570,12 @@ li {
     width: 95%;
   }  
 
-  .container p {
-    font-size: 20px;
-    margin: 20px 10px;
+}
+
+@media (max-height: 800px) {
+
+  .slide .container {
+    max-height: 500px;
   }
 
-  .container li {
-    font-size: 18px;
-  }
-
-  .container .bold-text {
-    font-size: 24px;
-  }
-
-  .container .bio p {
-    font-size: 16px;
-  }
-
-  .container .link-position a {
-    font-size: 12px;
-  }
 }
