@@ -1,6 +1,11 @@
 $(document).ready(function(){
 
   var $slides = $('.slides')
+  
+    , animatingTO
+    , isAnimating = false
+    , scrollSpeed
+    , parallax
 
     , anchors = _.collect($('.slide'), function(el){ return el.getAttribute('id'); })
     , anchorPositions
@@ -19,18 +24,79 @@ $(document).ready(function(){
     , tempNode;
 
 
-  anchors.unshift('');
-  currentAnchor = anchors[0];
+  currentAnchor = (function(){
+    if (window.location.hash) {
+      var matchedAnchorIndex = _.indexOf(anchors, window.location.hash.replace('#', ''));
+      if (matchedAnchorIndex != -1) return anchors[matchedAnchorIndex];
+    }
+    return anchors[0];
+  }());
 
 
   $slides.on('onwheel mousewheel DOMMouseScroll', onScroll);
 
   setSize()
   $(window).resize(setSize);
-  
 
+
+  Mousetrap.bind(['home'], function(e) {
+    scrollToSlide(anchors[0], 1);
+    return false;
+  });
+
+  Mousetrap.bind(['end'], function(e) {
+    scrollToSlide(anchors[anchors.length - 1], 1);
+    return false;
+  });  
+
+  Mousetrap.bind(['up', 'left', 'pageup', 'shift+space'], function(e) {
+    var curIndex = _.indexOf(anchors, currentAnchor);
+    if (curIndex != -1) scrollToSlide(anchors[curIndex - 1]);
+    return false;
+  });
+  
+  Mousetrap.bind(['down', 'right', 'pagedown', 'space'], function(e) {
+    var curIndex = _.indexOf(anchors, currentAnchor);
+    if (curIndex != -1) scrollToSlide(anchors[curIndex + 1]);
+    return false;
+  });
+
+
+  function scrollToSlide(slide, speed) {
+    if (slide) {
+      $('body, html').stop();
+      if (animatingTO) clearTimeout(animatingTO);
+      isAnimating = true;
+      $('body, html').animate({
+        scrollTop: $('#'+slide).offset().top
+      }, {
+        duration: speed || 1000,
+        complete: function() {
+          animatingTO = setTimeout(function() {
+            isAnimating = false;
+          }, 500);
+        },
+        progress: function() {
+          onScroll();
+        }
+      });
+    }
+  }
+
+  function updateHash(hash) {
+    tempNode = $('#'+hash);
+    if (tempNode) tempNode.attr('id', '');
+    window.location.hash = hash;
+    if (tempNode) tempNode.attr('id', currentAnchor);
+    tempNode = undefined;
+  }
 
   function onScroll(e) {
+
+    if (e && isAnimating) {
+      e.preventDefault();
+      return false;
+    }
 
     pos = $(window).scrollTop();
 
@@ -45,11 +111,8 @@ $(document).ready(function(){
     });
 
     if (currentAnchor != visibleAnchor) {
-      tempNode = $('#'+visibleAnchor);
-      if (tempNode) tempNode.attr('id', '');
-      window.location.hash = currentAnchor = visibleAnchor;
-      if (tempNode) tempNode.attr('id', currentAnchor);
-      tempNode = undefined;
+      currentAnchor = visibleAnchor;
+      updateHash(currentAnchor);
     }
     
     if ($(window).width() >= 800) {
@@ -57,21 +120,21 @@ $(document).ready(function(){
       if ($('#'+currentAnchor).length) {
         currentOffset = ( windowHeight / 2 - ( $('#'+currentAnchor).offset().top - pos ) ) / windowHeight - 0.5;
         if (currentOffset >= -1 && currentOffset <= 1) {
-          $('#'+currentAnchor+' .container').css({ marginTop: 150 * currentOffset });
+          $('#'+currentAnchor+' .container').css({ marginTop: scrollSpeed * currentOffset });
         }
       }
       
       if ($('#'+nextAnchor).length) {
         nextOffset = ( windowHeight / 2 - ( $('#'+nextAnchor).offset().top - pos ) ) / windowHeight - 0.5;
         if (nextOffset >= -1 && nextOffset <= 1) {
-          $('#'+nextAnchor+' .container').css({ marginTop: 150 * nextOffset });
+          $('#'+nextAnchor+' .container').css({ marginTop: scrollSpeed * nextOffset });
         }
       }
 
       if ($('#'+previousAnchor).length) {
         previousOffset = ( windowHeight / 2 - ( $('#'+previousAnchor).offset().top - pos ) ) / windowHeight - 0.5;
         if (previousOffset >= -1 && previousOffset <= 1) {
-          $('#'+previousAnchor+' .container').css({ marginTop: 150 * previousOffset });
+          $('#'+previousAnchor+' .container').css({ marginTop: scrollSpeed * previousOffset });
         }
       }
 
@@ -103,7 +166,12 @@ $(document).ready(function(){
       });
     });
 
+    scrollSpeed = windowHeight < 800 ? 100 : 200;
+    parallax = windowWidth > 800;
+
     anchorPositions = getAnchorPositions(anchors);
+    
+    scrollToSlide(currentAnchor);
   }
 
 
