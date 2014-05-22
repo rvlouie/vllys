@@ -230,5 +230,4 @@ $(document).ready(function(){
     scrollToSlide(_.indexOf(slides, currentSlide));
   }
 
-
 });

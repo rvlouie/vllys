@@ -37,6 +37,12 @@ li {
 	font-family: 'Helvetica', "Arial", sans-serif;
 }
 
+.highlight {
+	color: white;
+	background-color: #1d7db3;
+	padding: 0 9px;
+}
+
 .slide {
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -55,7 +61,7 @@ li {
 
 .slide .container.intro {
 	background-color: black;
-	box-shadow: 0 0 50px -5px #FFF;
+	box-shadow: 0 0 50px -5px #6a6a6a;
 }
 
 .slide .container.section-divider {
@@ -335,7 +341,7 @@ li {
 .slide-18-image {
 	background-image: url('../assets/slide-18.jpg');
 	width: 808px;
-	height: 469px; 	
+	height: 319px; 	
 }
 
 #slide-19 {
@@ -398,6 +404,7 @@ li {
 	position: relative;
 	width: 350px;
 	height: 300px;
+	display: block;
 }
 
 .link-position a {
@@ -442,15 +449,15 @@ li {
 
 
 .container p {
-	font-size: 34px;
+	font-size: 30px;
 }
 
 .container li {
-  font-size: 30px;
+  font-size: 26px;
 }
 
 .container .bold-text {
-	font-size: 40px;
+	font-size: 36px;
 }
 
 .container .bio p {
@@ -463,8 +470,18 @@ li {
 
 .container .blue-text {
 	color: #1d7db3;
-  font-size: 36px;
+  font-size: 32px;
   line-height: 1.25em;
+}
+
+.container .quote {
+	font-size: 28px;
+	margin-top: 40px;
+	color: #777;
+}
+
+.container .tag {
+	font-size: 24px;
 }
 
 .container .bold-text {
@@ -476,15 +493,15 @@ li {
 @media (max-width: 1600px) {
 
   .container p {
-    font-size: 26px;
+    font-size: 22px;
   }
 
   .container li {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .container .bold-text {
-    font-size: 28px;
+    font-size: 24px;
   }
 
   .container .bio p {
@@ -501,16 +518,16 @@ li {
 @media (max-height: 800px) {
 
   .container p {
-    font-size: 20px;
+    font-size: 16px;
     margin: 20px 10px;
   }
 
   .container li {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .container .bold-text {
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .container .bio p {
