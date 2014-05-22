@@ -98,7 +98,7 @@ $(document).ready(function(){
       isAnimating = true;
 
       var options = {
-        duration: 400,
+        duration: 1000,
         complete: function() {
           animatingTO = setTimeout(function() {
             isAnimating = false;
