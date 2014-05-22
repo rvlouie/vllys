@@ -174,5 +174,4 @@ $(document).ready(function(){
     scrollToSlide(currentAnchor);
   }
 
-
 });
