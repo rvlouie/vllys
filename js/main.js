@@ -126,6 +126,7 @@ $(document).ready(function(){
       onScrollTO;
 
   function onScroll(e) {
+    if (!parallax) return;
     if (e) e.preventDefault();
     if (stopScroll) return;
 
@@ -174,21 +175,21 @@ $(document).ready(function(){
     if (parallax) {
 
       if ($currentSlide && $currentSlide.length) {
-        currentOffset = ( windowHeight / 2 - ( $currentSlide.offset().top - pos ) ) / windowHeight - 0.5;
+        currentOffset = ( windowHeight / 2 - ( $currentSlide.offset().top - pos ) ) / windowHeight - 0.8;
         if (currentOffset >= -1 && currentOffset <= 1) {
           $currentSlide.find('.container').css({ marginTop: scrollSpeed * currentOffset });
         }
       }
       
       if ($nextSlide && $nextSlide.length) {
-        nextOffset = ( windowHeight / 2 - ( $nextSlide.offset().top - pos ) ) / windowHeight - 0.5;
+        nextOffset = ( windowHeight / 2 - ( $nextSlide.offset().top - pos ) ) / windowHeight - 0.8;
         if (nextOffset >= -1 && nextOffset <= 1) {
           $nextSlide.find('.container').css({ marginTop: scrollSpeed * nextOffset });
         }
       }
 
       if ($previousSlide && $previousSlide.length) {
-        previousOffset = ( windowHeight / 2 - ( $previousSlide.offset().top - pos ) ) / windowHeight - 0.5;
+        previousOffset = ( windowHeight / 2 - ( $previousSlide.offset().top - pos ) ) / windowHeight - 0.8;
         if (previousOffset >= -1 && previousOffset <= 1) {
           $previousSlide.find('.container').css({ marginTop: scrollSpeed * previousOffset });
         }
@@ -222,7 +223,7 @@ $(document).ready(function(){
       });
     });
 
-    scrollSpeed = windowHeight < 800 ? 120 : 240;
+    scrollSpeed = windowHeight < 800 ? 100 : 200;
     parallax = windowWidth > 800;
 
     slidePositions = getSlidePositions(slides);
