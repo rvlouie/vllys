@@ -222,10 +222,12 @@ $(document).ready(function(){
       });
     });
 
-    scrollSpeed = windowHeight < 800 ? 120 : 280;
+    scrollSpeed = windowHeight < 800 ? 120 : 240;
     parallax = windowWidth > 800;
 
     slidePositions = getSlidePositions(slides);
+
+    scrollToSlide(_.indexOf(slides, currentSlide));
   }
 
 
