@@ -209,9 +209,13 @@ $(document).ready(function(){
     windowWidth = $(window).width();
     windowHeight = $(window).height();
 
+    parallax = windowWidth > 800;
+    transitionFactor = Math.max(1.5 - (windowHeight / 1024), 0.75);
+    slidePositions = getSlidePositions(slides);
+
     $('.slide').css({
       width: windowWidth,
-      height: windowHeight
+      height: parallax ? windowHeight : 'auto'
     });
 
     $('.background').css({
@@ -222,16 +226,10 @@ $(document).ready(function(){
     setTimeout(function() {
       $('.slide > .container').each(function(){
         $(this).css({
-          marginTop: windowHeight / 2 - $(this).outerHeight() / 2
+          marginTop: (windowHeight / 2 - $(this).outerHeight() / 2)
         });
       });
     }, 100);
-
-    transitionFactor = Math.max(1.5 - (windowHeight / 1024), 0.75);
-    console.log(transitionFactor);
-    parallax = windowWidth > 800;
-
-    slidePositions = getSlidePositions(slides);
 
     scrollToSlide(currentSlideIndex);
   }

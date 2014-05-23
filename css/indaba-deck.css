@@ -1,12 +1,12 @@
-#slide-1  { background-image: url('/assets/bg_1.jpg');  }
-#slide-2  { background-image: url('/assets/bg_2.jpg');  }
-#slide-3  { background-image: url('/assets/bg_3.jpg');  }
-#slide-4  { background-image: url('/assets/bg_4.jpg');  }
-#slide-5  { background-image: url('/assets/bg_5.jpg');  }
-#slide-6  { background-image: url('/assets/bg_6.jpg');  }
-#slide-7  { background-image: url('/assets/bg_7.jpg');  }
-#slide-8  { background-image: url('/assets/bg_8.jpg');  }
-#slide-9  { background-image: url('/assets/bg_9.jpg');  }
+#slide-1  { background-image: url('/assets/bg_1.jpg'); }
+#slide-2  { background-image: url('/assets/bg_2.jpg'); }
+#slide-3  { background-image: url('/assets/bg_3.jpg'); }
+#slide-4  { background-image: url('/assets/bg_4.jpg'); }
+#slide-5  { background-image: url('/assets/bg_5.jpg'); }
+#slide-6  { background-image: url('/assets/bg_6.jpg'); }
+#slide-7  { background-image: url('/assets/bg_7.jpg'); }
+#slide-8  { background-image: url('/assets/bg_8.jpg'); }
+#slide-9  { background-image: url('/assets/bg_9.jpg'); }
 #slide-10 { background-image: url('/assets/bg_10.jpg'); }
 #slide-11 { background-image: url('/assets/bg_11.jpg'); }
 #slide-12 {	background-image: url('/assets/bg_12.jpg'); }
@@ -24,6 +24,12 @@
 #slide-24 {	background-image: url('/assets/bg_24.jpg'); }
 #slide-25 {	background-image: url('/assets/bg_25.jpg'); }
 
+.dan-colbert          { background-image: url('/assets/dan-colbert.jpg'); }
+.indabasync           { background-image: url('/assets/indabasync.jpg'); }
+.opportunities        { background-image: url('/assets/opportunities.jpg'); }
+.suite-268            { background-image: url('/assets/suite268.jpg'); }
+.client-testimonials  { background-image: url('/assets/client-testimonials.jpg'); }
+.user-testimonials    { background-image: url('/assets/user-testimonials.jpg'); }
 
 
 html,
@@ -117,6 +123,7 @@ li {
 
 .container p {
 	font-size: 30px;
+  line-height: 1.35em;
 }
 
 .container ul, ol {
@@ -141,14 +148,21 @@ li {
 
 .container .blue-text {
 	color: #1d7db3;
-  font-size: 32px;
-  line-height: 1.25em;
+  font-size: 38px;
+  line-height: 1.35em;
 }
 
-.container .quote {
+.container .blue-text + p {
+  margin-top: 12px;
+}
+
+.container blockquote {
 	font-size: 28px;
 	margin-top: 40px;
-	color: #777;
+}
+
+.container blockquote small {
+  font-size: 20px;
 }
 
 .container table {
@@ -180,6 +194,12 @@ li {
   width: 60%;
 }
 
+#slide-16 .container .slide-image {
+  width: 500px;
+  min-height: initial;
+  max-height: initial;
+}
+
 #slide-21 .container .slide-image,
 #slide-22 .container .slide-image {
   max-width: 100%;
@@ -188,9 +208,12 @@ li {
 
 
 
-
 .management-team {
   margin: 0;
+}
+
+.management-team table {
+  margin-bottom: 15px;
 }
 
 .management-team .bio {
@@ -201,12 +224,16 @@ li {
 .management-team .bio p {
 	float: left;
 	margin: 0;
-	font-size: 18px;
+	font-size: 20px;
 }
 
 .management-team .bio .tag {
 	clear: both;
-	font-size: 24px;
+	font-size: 20px;
+}
+
+.management-team .bio .blue-text {
+  font-size: 24px;
 }
 
 .management-team .bio img {
@@ -241,30 +268,33 @@ li {
 }
 
 
+
+.links table {
+  height: 600px;
+}
+
+.links table tr {
+}
+
 .links table td.spacer {
-  width: 1.5%;
+  width: 3%;
 }
 
 .links .link-block {
-	width: 32%;
-}
-
-.links .link-position {
-	margin: 20px auto;
-	position: relative;
-	width: 350px;
-	height: 300px;
-	display: block;
-}
-
-.links .link-position a {
+	width: 31%;
+  height: 300px;
 }
 
 .links .link-box {
   display: block;
+  width: 100%;
+  height: 100%;
   position: relative;
-  border: 1px solid transparent;
-  box-shadow: 1px 1px 5px #000;
+  border: 1px solid #FFF;
+  box-shadow: 1px 1px 5px #666;
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
 }
 
 .links .link-box  span {
@@ -295,7 +325,11 @@ li {
 @media (max-width: 1600px) {
 
   .container p {
-    font-size: 22px;
+    font-size: 24px;
+  }
+
+  .container .blue-text {
+    font-size: 30px;
   }
 
   .container li {
@@ -313,78 +347,62 @@ li {
   .container .link-position a {
     font-size: 15px;
   }
+
 }
 
 
-@media (max-width: 1400px) {
-  .management-team .bio p {
-    font-size: 16px;
-  }
-  .management-team .bio .tag {
-    font-size: 18px;
-  }
-}
+@media (max-width: 800px) {
 
+  .backgrounds {
+    position: absolute !important;
+    top: 0 !important;
+    -webkit-transform: none !important;
+  }
 
-@media (max-width: 800px),
-@media (max-height: 800px) {
+  .container {
+    margin-top: 200px !important;
+  } 
 
   .container p {
-    font-size: 16px;
-    margin: 20px 10px;
+    font-size: 18px;
+  }
+
+  .container .blue-text {
+    font-size: 22px;
   }
 
   .container li {
     font-size: 14px;
   }
 
-  .container .bold-text {
-    font-size: 20px;
+  .bold-text {
+    font-size: 16px;
   }
 
-  .links .link-position a {
+  .container .bio p {
     font-size: 12px;
   }
-}
 
-@media (max-width: 800px) {
-
-  .slide {
-	  position: static !important;
-	  margin: 0 0 40px 0 !important;
-	  height: auto !important;
-	  padding-top: 400px;
-	  background-position: top center;
+  .container .link-position a {
+    font-size: 11px;
   }
 
-  .section-slide {
-    margin: 0 20px;
-    width: auto;
-    background-size: contain;
-  }
-  
-  .slide .container {
-	  position: static !important;
-	  margin: 0 !important;
-	  max-height: none;
-    padding: 40px 20px;
-  }
-
-  .slide .images {
+  .slide .container table td {
+    display: block;
     float: none;
-    margin: 20px 0px;
-    width: 100%;
+    width: 100% !important;
   }
-	
-  .slide .content,
-  .slide .content-right {
-    float: none;
-    margin: 20px 0 0;
-    width: 100%;
+
+  .slide .container table td + td {
+    margin-top: 10px;
   }
 
   .slide .slide-image {
     background-size: contain;
+    width: 100% !important;
+    min-width: initial;
+    min-height: initial;
+    max-height: initial;
   }
 
   .slide .content + .images {
