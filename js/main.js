@@ -48,12 +48,12 @@ $(document).ready(function(){
   $slides.on('onwheel mousewheel DOMMouseScroll', onScroll);
 
   Mousetrap.bind(['home'], function(e) {
-    scrollToSlide(0);
+    scrollToSlide(0, 0);
     return false;
   });
 
   Mousetrap.bind(['end'], function(e) {
-    scrollToSlide(slides.length - 1);
+    scrollToSlide(slides.length - 1, 0);
     return false;
   });  
 
@@ -93,7 +93,7 @@ $(document).ready(function(){
   function updateSlides(index) {
   }
 
-  function scrollToSlide(index) {
+  function scrollToSlide(index, speed) {
     var slide = slides[index];
     if (slide) {
       currentSlideIndex = index;
@@ -121,7 +121,7 @@ $(document).ready(function(){
       $('body, html').animate({
         scrollTop: slidePositions[_.indexOf(slides, slide)]
       }, {
-        duration: transitionFactor * 1400,
+        duration: typeof(speed) != 'undefined' ? speed : transitionFactor * 1400,
         easing: 'easeOutCubic',
         complete: function() {
           animatingTO = setTimeout(function() {
@@ -131,7 +131,7 @@ $(document).ready(function(){
       });
 
       $backgrounds.animate({ nonExistentProperty: slidePositions[_.indexOf(slides, slide)] }, {
-        duration: transitionFactor * 1700,
+        duration: typeof(speed) != 'undefined' ? speed : transitionFactor * 1700,
         easing: 'easeOutCubic',        
         step: function(now, fx) {
           $(this).css('-webkit-transform', 'translate3d(0px, '+(-1 * now)+'px, 0px)');
@@ -211,7 +211,6 @@ $(document).ready(function(){
 
     parallax = windowWidth > 800;
     transitionFactor = Math.max(1.5 - (windowHeight / 1024), 0.75);
-    slidePositions = getSlidePositions(slides);
 
     $('.slide').css({
       width: windowWidth,
@@ -223,14 +222,17 @@ $(document).ready(function(){
       height: windowHeight
     });
 
-    setTimeout(function() {
-      $('.slide > .container').each(function(){
-        $(this).css({
-          marginTop: (windowHeight / 2 - $(this).outerHeight() / 2)
+    if (parallax) {
+      setTimeout(function() {
+        $('.slide > .container').each(function(){
+          $(this).css({
+            marginTop: parallax ? (windowHeight / 2 - $(this).outerHeight() / 2) : (windowHeight * 0.2)
+          });
         });
-      });
-    }, 100);
+      }, 100);
+    }
 
+    slidePositions = getSlidePositions(slides);
     scrollToSlide(currentSlideIndex);
   }
 
