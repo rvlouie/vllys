@@ -1,26 +1,17 @@
 $(document).ready(function(){
 
   var $slides = $('.slides')
+    , $backgrounds = $('.backgrounds')
   
     , animatingTO
     , isAnimating = false
-    , scrollSpeed
+    , transitionFactor = 1
     , parallax
 
     , slides = _.collect($('.slide'), function(el){ return el.getAttribute('id'); })
     , slidePositions
-
-    , currentSlide
-    , nextSlide
-    , previousSlide
-
-    , $currentSlide
-    , $nextSlide
-    , $previousSlide
-
-    , currentOffset = 0
-    , nextOffset = 0
-    , previousOffset = 0
+    
+    , currentSlideIndex
 
     , pos = $(window).scrollTop()
     , windowWidth = $(window).width()
@@ -29,16 +20,28 @@ $(document).ready(function(){
     , tempNode;
 
   
-  currentSlide = (function(){
+  currentSlideIndex = (function(){
     if (window.location.hash) {
       var matchedSlideIndex = _.indexOf(slides, window.location.hash.replace('#', ''));
-      if (matchedSlideIndex != -1) return slides[matchedSlideIndex];
+      if (matchedSlideIndex != -1) return matchedSlideIndex;
     }
-    return slides[0];
+    return 0;
   }());
 
-  $currentSlide = $('#'+currentSlide);
 
+  // set up slides / backgrounds
+  $('.slide').each(function(i) {
+    var el = $(document.createElement('div'));
+        el.attr('id', $(this).attr('id') + '-background');
+        el.addClass('background');
+        el.css({
+          'backgroundImage': $(this).css('background-image'),
+          'height': windowHeight,
+          'width': windowWidth
+        });
+    $backgrounds.append(el);
+    $(this).css("background", "none");
+  });
 
   $(window).resize(setSize);
 
@@ -69,48 +72,71 @@ $(document).ready(function(){
 
 
 
+  var $prevSlide
+    , $currentSlide
+    , $nextSlide
+    , $prevSlideBackground
+    , $currentSlideBackground
+    , $nextSlideBackground
+    , prevSlideOffset
+    , currentSlideOffset
+    , nextSlideOffset;
+
   function goToNextSlide() {
-    var curIndex = _.indexOf(slides, currentSlide);
-    if (curIndex != -1) scrollToSlide(curIndex + 1);
+    scrollToSlide(currentSlideIndex + 1);
   }
 
   function goToPreviousSlide() {
-    var curIndex = _.indexOf(slides, currentSlide);
-    if (curIndex != -1) scrollToSlide(curIndex - 1);
+    scrollToSlide(currentSlideIndex - 1);
+  }
+
+  function updateSlides(index) {
   }
 
   function scrollToSlide(index) {
     var slide = slides[index];
     if (slide) {
-      currentSlide  = slide;
-      nextSlide     = slides[index + 1];
-      previousSlide = slides[index - 1];
+      currentSlideIndex = index;
 
-      $currentSlide   = $('#'+currentSlide);
-      $nextSlide      = $('#'+nextSlide);
-      $previousSlide  = $('#'+previousSlide);
+      $prevSlide     = $('#slide-'+(currentSlideIndex)    );
+      $currentSlide  = $('#slide-'+(currentSlideIndex + 1));
+      $nextSlide     = $('#slide-'+(currentSlideIndex + 2));
+
+      prevSlideOffset     = $prevSlide.length ? $prevSlide.offset().top : null;
+      currentSlideOffset  = $currentSlide.length ? $currentSlide.offset().top : null;
+      nextSlideOffset     = $nextSlide.length ? $nextSlide.offset().top : null;
+      
+      $prevSlideBackground     = $('#slide-'+(currentSlideIndex)    +'-background');
+      $currentSlideBackground  = $('#slide-'+(currentSlideIndex + 1)+'-background');
+      $nextSlideBackground     = $('#slide-'+(currentSlideIndex + 2)+'-background');
 
       updateHash(slide);
 
-      var $slide = slide;
+      $backgrounds.stop();
       $('body, html').stop();
+
       if (animatingTO) clearTimeout(animatingTO);
       isAnimating = true;
 
-      var options = {
-        duration: 1000,
+      $('body, html').animate({
+        scrollTop: slidePositions[_.indexOf(slides, slide)]
+      }, {
+        duration: transitionFactor * 1400,
+        easing: 'easeOutCubic',
         complete: function() {
           animatingTO = setTimeout(function() {
             isAnimating = false;
           }, 500);
         }
-      };
+      });
 
-      if (parallax) options.progress = updateParallax
-
-      $('body, html').animate({
-        scrollTop: slidePositions[_.indexOf(slides, slide)]
-      }, options);
+      $backgrounds.animate({ nonExistentProperty: slidePositions[_.indexOf(slides, slide)] }, {
+        duration: transitionFactor * 1700,
+        easing: 'easeOutCubic',        
+        step: function(now, fx) {
+          $(this).css('-webkit-transform', 'translate3d(0px, '+(-1 * now)+'px, 0px)');
+        }
+      });
     }
   }
 
@@ -168,36 +194,7 @@ $(document).ready(function(){
     }
   }
 
-  function updateParallax() {
 
-    pos = $(window).scrollTop();
-
-    if (parallax) {
-
-      if ($currentSlide && $currentSlide.length) {
-        currentOffset = ( windowHeight / 2 - ( $currentSlide.offset().top - pos ) ) / windowHeight - 0.8;
-        if (currentOffset >= -1 && currentOffset <= 1) {
-          $currentSlide.find('.container').css({ marginTop: scrollSpeed * currentOffset });
-        }
-      }
-      
-      if ($nextSlide && $nextSlide.length) {
-        nextOffset = ( windowHeight / 2 - ( $nextSlide.offset().top - pos ) ) / windowHeight - 0.8;
-        if (nextOffset >= -1 && nextOffset <= 1) {
-          $nextSlide.find('.container').css({ marginTop: scrollSpeed * nextOffset });
-        }
-      }
-
-      if ($previousSlide && $previousSlide.length) {
-        previousOffset = ( windowHeight / 2 - ( $previousSlide.offset().top - pos ) ) / windowHeight - 0.8;
-        if (previousOffset >= -1 && previousOffset <= 1) {
-          $previousSlide.find('.container').css({ marginTop: scrollSpeed * previousOffset });
-        }
-      }
-
-    }
-  }
-  
   function getSlidePositions(as) {
     return _.unique(_.collect(as, function(slide) {
       if (slide) {
@@ -216,19 +213,27 @@ $(document).ready(function(){
       width: windowWidth,
       height: windowHeight
     });
-    $('.slide > .container').each(function(){
-      $(this).css({
-        position: 'absolute',
-        top: windowHeight / 2 - $(this).height() / 2
-      });
+
+    $('.background').css({
+      width: windowWidth,
+      height: windowHeight
     });
 
-    scrollSpeed = windowHeight < 800 ? 100 : 200;
+    setTimeout(function() {
+      $('.slide > .container').each(function(){
+        $(this).css({
+          marginTop: windowHeight / 2 - $(this).outerHeight() / 2
+        });
+      });
+    }, 100);
+
+    transitionFactor = Math.max(1.5 - (windowHeight / 1024), 0.75);
+    console.log(transitionFactor);
     parallax = windowWidth > 800;
 
     slidePositions = getSlidePositions(slides);
 
-    scrollToSlide(_.indexOf(slides, currentSlide));
+    scrollToSlide(currentSlideIndex);
   }
 
 });
