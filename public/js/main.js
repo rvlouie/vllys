@@ -72,7 +72,11 @@ $(document).ready(function(){
 
 
   Mousetrap.bind('?', function(e) {
-    $('.controls').fadeToggle(100);
+    if ($('.controls').is(':visible')) {
+      hideControlsAndWait();
+    } else {
+      $('.controls').fadeIn(250);
+    }
     return false;
   });
 

@@ -39,9 +39,9 @@ li {
   float: left;
   border: 2px solid;
   border-radius: 5px;
-  padding: 4px 16px;
+  padding: 4px 13px 5px;
   margin: 0 8px 1px 0;
-  text-indent: -10px;
+  text-indent: -9px;
 }
 
 
@@ -67,7 +67,7 @@ li {
 }
 
 .controls dl {
-  margin: 0;
+  margin: 15px 0 0;
   font-size: 20px;
 }
 
