@@ -35,6 +35,7 @@ $(document).ready(function(){
 	slideLoop("slide-2");
 	slideLoop("slide-9");
 
+
   // set up slides / backgrounds
   $('.slide').each(function(i) {
     var el = $(document.createElement('div'));

@@ -39,8 +39,6 @@ function slideLoop(slideId) {
     startCarousel();
   })	
 
-  console.log('add handlers', slideId);
-
   $("#" + slideId).on("enter", startCarousel);
 
   $("#" + slideId).on("leave", stopCarousel); 
