@@ -159,6 +159,7 @@ $(document).ready(function(){
     if (!parallax) return;
     if (e) e.preventDefault();
     if (stopScroll) return;
+    if (isAnimating) return;
 
     var moveX,
         moveY;
