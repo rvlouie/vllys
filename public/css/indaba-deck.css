@@ -172,26 +172,10 @@ li {
   max-height: 350px;
 }
 
+
 .container .carousel {
   height: 300px;
   width: 300px;
-}
-
-/*.container .carousel-play {
-  display: block;
-  position: absolute;
-  font-size: 130px;
-  color: white;
-  opacity: 0.9;
-  cursor: pointer;
-  top: 55px;
-  left: 100px;
-  z-index: 1001;
-}*/
-
-.container .carousel-play:hover {
-  color: #1d7db3;
-  opacity: 0.5;
 }
 
 .container .top-carousel {
@@ -207,6 +191,7 @@ li {
   top: 0;
   bottom: 0;
 }
+
 
 .container p {
 	font-size: 30px;
