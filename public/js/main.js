@@ -17,7 +17,10 @@ $(document).ready(function(){
     , windowWidth = $(window).width()
     , windowHeight = $(window).height()
 
-    , tempNode;
+    , tempNode
+
+    , controlsReady = false
+    , controlsTO;
 
   
   currentSlideIndex = (function(){
@@ -68,6 +71,18 @@ $(document).ready(function(){
   });
 
 
+  Mousetrap.bind('?', function(e) {
+    $('.controls').fadeToggle(100);
+    return false;
+  });
+
+  $('.controls .close').click(function() { $('.controls').fadeToggle(100); });
+  
+  $('.controls').hide().delay(2000).fadeToggle(500, function(){
+    controlsReady = true;
+  });
+
+
   setSize();
 
 
@@ -90,12 +105,20 @@ $(document).ready(function(){
     scrollToSlide(currentSlideIndex - 1);
   }
 
-  function updateSlides(index) {
+  function hideControlsAndWait() {
+    if (!controlsReady) return;
+    $('.controls').fadeOut(250);
+    if (controlsTO) clearTimeout(controlsTO);
+    controlsTO = setTimeout(function() {
+      $('.controls').fadeIn(500);
+    }, 10 * 1000);
   }
 
   function scrollToSlide(index, speed) {
     var slide = slides[index];
     if (slide) {
+      hideControlsAndWait();
+
       currentSlideIndex = index;
 
       $prevSlide     = $('#'+slides[currentSlideIndex]    );
@@ -230,6 +253,8 @@ $(document).ready(function(){
     });
 
     if (parallax) {
+      $('body').css('overflow', 'hidden');
+      $('.controls').css('left', 'initial');
       setTimeout(function() {
         $('.slide > .container').each(function(){
           $(this).css({
@@ -237,6 +262,9 @@ $(document).ready(function(){
           });
         });
       }, 100);
+    } else {
+      $('body').css('overflow', 'initial');
+      $('.controls').css('left', '-1000px');
     }
 
     slidePositions = getSlidePositions(slides);

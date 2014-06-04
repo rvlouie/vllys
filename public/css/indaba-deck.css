@@ -34,28 +34,45 @@ li {
 	font-family: 'Helvetica', "Arial", sans-serif;
 }
 
+.keyboard-button {
+  display: block;
+  float: left;
+  border: 2px solid;
+  border-radius: 5px;
+  padding: 4px 16px;
+  margin: 0 8px 1px 0;
+  text-indent: -10px;
+}
+
 
 .controls {
   position: fixed;
   z-index: 3;
-  background: rgba(255,255,255, 0.9);
-  width: 800px;
-  height: 600px;
-  box-shadow: 1px 1px 10px rgba(0,0,0, 0.5);
-  margin-left: -400px;
-  left: 50%;
-  top: 50%;
-  margin-top: -300px;
-  padding: 50px;
+  width: 280px;
+  right: 20px;
+  bottom: 20px;
+  opacity: 0.9;
+}
+
+.controls .panel {
+  margin: 0;
+  box-shadow: 1px 1px 10px -2px rgba(0,0,0, 0.75);
+}
+
+.controls .panel-heading .close,
+.controls .panel-heading .badge {
+  top: -1px;
+  position: relative;
+  margin-left: 2px;
 }
 
 .controls dl {
-  font-size: 26px;
+  margin: 0;
+  font-size: 20px;
 }
 
 .controls dl dt {
   float: left;
-  width: 60px;
   overflow: hidden;
   clear: left;
   text-align: right;
@@ -64,9 +81,11 @@ li {
   color: #0083CB;
 }
 
+
 .controls dl dd {
-  margin-left: 90px;
-  margin-bottom: 20px;
+  margin: 0 0 15px;
+  padding-top: 3px;
+  color: #666;
 }
 
 .controls dl dd:last-child {
