@@ -101,7 +101,7 @@ li {
   width: 300px;
 }
 
-.container .carousel-play {
+/*.container .carousel-play {
   display: block;
   position: absolute;
   font-size: 130px;
@@ -111,7 +111,7 @@ li {
   top: 55px;
   left: 100px;
   z-index: 1001;
-}
+}*/
 
 .container .carousel-play:hover {
   color: #1d7db3;

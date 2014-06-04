@@ -4,6 +4,8 @@ $(document).ready(function(){
 
 		var $images = $("#" + slideId +" img.carousel-image");
 		var currentIndex
+		var slideInterval 
+
 		$images.each(function(i, image) {
 			var $image = $(image) 
 			$image.addClass(i);
@@ -21,10 +23,24 @@ $(document).ready(function(){
 			$($images[currentIndex]).removeClass("bottom-carousel").addClass("top-carousel");
 		}
 
-		$("#" + slideId + ' .carousel').click(function(){
+		$("#" + slideId + " .carousel-play").click(function(){
 			$("#" + slideId + " .carousel-play").removeClass();
-			setInterval(nextImage, 3000);
+			if (slideInterval) {
+				clearInterval(slideInterval);
+			};
+			slideInterval = setInterval(nextImage, 3000);
 		})	
+
+		$("#" + slideId).on("enter", function() {
+			$("#" + slideId + " .carousel-play").trigger("click");	
+		})
+
+
+		$("#" + slideId).on("leave", function() { 
+			if (slideInterval) {
+				clearInterval(slideInterval);
+			};
+		})
 
 	}
 
