@@ -41,6 +41,7 @@ body {
 body {
   width: 100%;
 	color: black;
+  overflow: hidden;
 }
 
 p {

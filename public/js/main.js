@@ -45,7 +45,7 @@ $(document).ready(function(){
 
   $(window).resize(setSize);
 
-  $slides.on('onwheel mousewheel DOMMouseScroll', onScroll);
+  $slides.on('onwheel mousewheel onmousewheel DOMMouseScroll', onScroll);
 
   Mousetrap.bind(['home'], function(e) {
     scrollToSlide(0, 0);
@@ -134,7 +134,11 @@ $(document).ready(function(){
         duration: typeof(speed) != 'undefined' ? speed : transitionFactor * 1700,
         easing: 'easeOutCubic',        
         step: function(now, fx) {
-          $(this).css('-webkit-transform', 'translate3d(0px, '+(-1 * now)+'px, 0px)');
+          $(this).css({
+            '-webkit-transform': 'translate3d(0px, '+(-1 * now)+'px, 0px)',
+                '-ms-transform': 'translate3d(0px, '+(-1 * now)+'px, 0px)',
+                    'transform': 'translate3d(0px, '+(-1 * now)+'px, 0px)'
+          });
         }
       });
     }
@@ -160,12 +164,14 @@ $(document).ready(function(){
         moveY;
     
     if (e.type == 'mousewheel') {
-      moveX = (e.originalEvent.wheelDeltaX * -1);
-      moveY = (e.originalEvent.wheelDeltaY * -1);
+      moveY = (e.originalEvent.wheelDelta * -1);
+    }
+    else if (e.type == 'onmousewheel') {
+      moveY = (e.originalEvent.wheelDelta * -1);
     }
     else if (e.type == 'DOMMouseScroll') {
       moveX = 0;
-      moveY = e.originalEvent.detail;
+      moveY = e.originalEvent.detail * 40;
     }
     else if (e.type == 'onwheel') {
       moveX = e.originalEvent.deltaX;
