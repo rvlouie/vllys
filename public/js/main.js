@@ -32,6 +32,9 @@ $(document).ready(function(){
   }());
 
 
+	slideLoop("slide-2");
+	slideLoop("slide-9");
+
   // set up slides / backgrounds
   $('.slide').each(function(i) {
     var el = $(document.createElement('div'));
@@ -45,6 +48,7 @@ $(document).ready(function(){
     $backgrounds.append(el);
     $(this).css("background", "none");
   });
+
 
   $(window).resize(setSize);
 
@@ -92,14 +96,8 @@ $(document).ready(function(){
 
 
   var $prevSlide
-    , $currentSlide
-    , $nextSlide
-    , $prevSlideBackground
-    , $currentSlideBackground
-    , $nextSlideBackground
-    , prevSlideOffset
-    , currentSlideOffset
-    , nextSlideOffset;
+    , $currentSlide;
+
 
   function goToNextSlide() {
     scrollToSlide(currentSlideIndex + 1);
@@ -131,36 +129,30 @@ $(document).ready(function(){
     if (slide) {
       hideControlsAndWait();
 
+      if (currentSlideIndex && currentSlideIndex !== index) $prevSlide = $('#'+slides[currentSlideIndex]);
+
       currentSlideIndex = index;
 
-      $prevSlide     = $('#'+slides[currentSlideIndex]    );
-      $currentSlide  = $('#'+slides[currentSlideIndex + 1]);
-      $nextSlide     = $('#'+slides[currentSlideIndex + 2]);
-
-      prevSlideOffset     = $prevSlide.length ? $prevSlide.offset().top : null;
-      currentSlideOffset  = $currentSlide.length ? $currentSlide.offset().top : null;
-      nextSlideOffset     = $nextSlide.length ? $nextSlide.offset().top : null;
-      
-      $prevSlideBackground     = $('#'+slides[currentSlideIndex]    +'-background');
-      $currentSlideBackground  = $('#'+slides[currentSlideIndex + 1]+'-background');
-      $nextSlideBackground     = $('#'+slides[currentSlideIndex + 2]+'-background');
+      $currentSlide = $('#'+slides[currentSlideIndex]);
 
       updateHash(slide);
 
       $backgrounds.stop();
-      $('body, html').stop();
+      $('body').stop();
 
       if (animatingTO) clearTimeout(animatingTO);
       isAnimating = true;
 
       $('.slide-indicator').finish();
 
-      $('body, html').animate({
+      $('body').animate({
         scrollTop: slidePositions[_.indexOf(slides, slide)]
       }, {
         duration: typeof(speed) != 'undefined' ? speed : transitionFactor * 1400,
         easing: 'easeOutCubic',
         complete: function() {
+          if ($prevSlide) $prevSlide.trigger('leave');
+          $currentSlide.trigger('enter');
           updateSlideIndicatorDebounced();
           animatingTO = setTimeout(function() {
             isAnimating = false;
