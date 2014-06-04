@@ -81,7 +81,6 @@ li {
   color: #0083CB;
 }
 
-
 .controls dl dd {
   margin: 0 0 15px;
   padding-top: 3px;
@@ -111,6 +110,24 @@ li {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
+}
+
+
+.slide-indicator {
+  position: fixed;
+  z-index: 3;
+  top: 20px;
+  right: 20px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(0,0,0, 0.5);
+  color: #FFF;
+  text-shadow: 1px 1px 1px #000;
+  font-size: 24px;
+}
+
+.slide-indicator:empty {
+  display: none;
 }
 
 

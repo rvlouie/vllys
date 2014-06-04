@@ -109,6 +109,14 @@ $(document).ready(function(){
     scrollToSlide(currentSlideIndex - 1);
   }
 
+  function updateSlideIndicator() {
+    $('.slide-indicator').finish();
+    $('.slide-indicator').text( (currentSlideIndex + 1) + " / " + slides.length );
+    $('.slide-indicator').delay(500).fadeIn().delay(3000).fadeOut();
+  }
+
+  var updateSlideIndicatorDebounced = _.debounce(updateSlideIndicator, 300, true);
+
   function hideControlsAndWait() {
     if (!controlsReady) return;
     $('.controls').fadeOut(250);
@@ -145,12 +153,15 @@ $(document).ready(function(){
       if (animatingTO) clearTimeout(animatingTO);
       isAnimating = true;
 
+      $('.slide-indicator').finish();
+
       $('body, html').animate({
         scrollTop: slidePositions[_.indexOf(slides, slide)]
       }, {
         duration: typeof(speed) != 'undefined' ? speed : transitionFactor * 1400,
         easing: 'easeOutCubic',
         complete: function() {
+          updateSlideIndicatorDebounced();
           animatingTO = setTimeout(function() {
             isAnimating = false;
           }, 500);
