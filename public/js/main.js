@@ -32,7 +32,7 @@ $(document).ready(function(){
   // set up slides / backgrounds
   $('.slide').each(function(i) {
     var el = $(document.createElement('div'));
-        el.attr('id', $(this).attr('id') + '-background');
+        el.attr('id', $(this).attr('id')+'-background');
         el.addClass('background');
         el.css({
           'backgroundImage': $(this).css('background-image'),
@@ -98,17 +98,17 @@ $(document).ready(function(){
     if (slide) {
       currentSlideIndex = index;
 
-      $prevSlide     = $('#slide-'+(currentSlideIndex)    );
-      $currentSlide  = $('#slide-'+(currentSlideIndex + 1));
-      $nextSlide     = $('#slide-'+(currentSlideIndex + 2));
+      $prevSlide     = $('#'+slides[currentSlideIndex]    );
+      $currentSlide  = $('#'+slides[currentSlideIndex + 1]);
+      $nextSlide     = $('#'+slides[currentSlideIndex + 2]);
 
       prevSlideOffset     = $prevSlide.length ? $prevSlide.offset().top : null;
       currentSlideOffset  = $currentSlide.length ? $currentSlide.offset().top : null;
       nextSlideOffset     = $nextSlide.length ? $nextSlide.offset().top : null;
       
-      $prevSlideBackground     = $('#slide-'+(currentSlideIndex)    +'-background');
-      $currentSlideBackground  = $('#slide-'+(currentSlideIndex + 1)+'-background');
-      $nextSlideBackground     = $('#slide-'+(currentSlideIndex + 2)+'-background');
+      $prevSlideBackground     = $('#'+slides[currentSlideIndex]    +'-background');
+      $currentSlideBackground  = $('#'+slides[currentSlideIndex + 1]+'-background');
+      $nextSlideBackground     = $('#'+slides[currentSlideIndex + 2]+'-background');
 
       updateHash(slide);
 
