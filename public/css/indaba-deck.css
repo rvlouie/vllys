@@ -34,6 +34,64 @@ li {
 	font-family: 'Helvetica', "Arial", sans-serif;
 }
 
+.keyboard-button {
+  display: block;
+  float: left;
+  border: 2px solid;
+  border-radius: 5px;
+  padding: 4px 13px 5px;
+  margin: 0 8px 1px 0;
+  text-indent: -9px;
+}
+
+
+.controls {
+  position: fixed;
+  z-index: 3;
+  width: 280px;
+  right: 20px;
+  bottom: 20px;
+  opacity: 0.9;
+}
+
+.controls .panel {
+  margin: 0;
+  box-shadow: 1px 1px 10px -2px rgba(0,0,0, 0.75);
+}
+
+.controls .panel-heading .close,
+.controls .panel-heading .badge {
+  top: -1px;
+  position: relative;
+  margin-left: 2px;
+}
+
+.controls dl {
+  margin: 15px 0 0;
+  font-size: 20px;
+}
+
+.controls dl dt {
+  float: left;
+  overflow: hidden;
+  clear: left;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #0083CB;
+}
+
+.controls dl dd {
+  margin: 0 0 15px;
+  padding-top: 3px;
+  color: #666;
+}
+
+.controls dl dd:last-child {
+  margin-bottom: 0;
+}
+
+
 .backgrounds {
   position: fixed;
   z-index: 1;
@@ -52,6 +110,24 @@ li {
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
+}
+
+
+.slide-indicator {
+  position: fixed;
+  z-index: 3;
+  top: 20px;
+  right: 20px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: rgba(0,0,0, 0.5);
+  color: #FFF;
+  text-shadow: 1px 1px 1px #000;
+  font-size: 24px;
+}
+
+.slide-indicator:empty {
+  display: none;
 }
 
 

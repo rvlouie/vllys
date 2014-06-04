@@ -7,8 +7,29 @@
     <link rel="stylesheet" href="css/indaba-deck.css">
   </head>
   <body>
-    <div class="backgrounds">
+
+    <div class="controls">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <button type="button" class="close pull-right" aria-hidden="true">&times;</button>
+          <h3 class="panel-title">Navigation</h3>
+        </div>
+        <div class="panel-body">
+          <p>Scroll using your mousewheel or trackpad to navigate the slides. <br/>You can also use your keyboard.</p>
+          <dl>
+            <dt><span class="keyboard-button glyphicon glyphicon-arrow-right"></span></dt>
+            <dd>Next Slide</dt>
+            <dt><span class="keyboard-button glyphicon glyphicon-arrow-left"></span></dt>
+            <dd>Previous Slide</dt>
+          </dl>
+        </div>
+      </div>
     </div>
+    
+    <div class="backgrounds"></div>
+    
+    <div class="slide-indicator"></div>
+
     <div class="slides">
 
       <div id="slide-1" class="slide" style="background-image: url('/assets/bg_1.jpg');">
