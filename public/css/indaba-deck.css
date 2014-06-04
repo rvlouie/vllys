@@ -60,6 +60,46 @@ li {
 	font-family: 'Helvetica', "Arial", sans-serif;
 }
 
+
+.controls {
+  position: fixed;
+  z-index: 3;
+  background: rgba(255,255,255, 0.9);
+  width: 800px;
+  height: 600px;
+  box-shadow: 1px 1px 10px rgba(0,0,0, 0.5);
+  margin-left: -400px;
+  left: 50%;
+  top: 50%;
+  margin-top: -300px;
+  padding: 50px;
+}
+
+.controls dl {
+  font-size: 26px;
+}
+
+.controls dl dt {
+  float: left;
+  width: 60px;
+  overflow: hidden;
+  clear: left;
+  text-align: right;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #0083CB;
+}
+
+.controls dl dd {
+  margin-left: 90px;
+  margin-bottom: 20px;
+}
+
+.controls dl dd:last-child {
+  margin-bottom: 0;
+}
+
+
 .backgrounds {
   position: fixed;
   z-index: 1;
