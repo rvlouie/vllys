@@ -1,3 +1,4 @@
+use Rack::Deflater
 use Rack::Static,
   :urls => ["/assets", "/js", "/css"],
   :root => "public"
