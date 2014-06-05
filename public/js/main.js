@@ -20,7 +20,6 @@ $(document).ready(function(){
     , tempNode
 
     , controlsReady = false
-    , controlsTO
 
     , documentTitle = $('title').text();
 
@@ -121,10 +120,6 @@ $(document).ready(function(){
   function hideControlsAndWait() {
     if (!controlsReady) return;
     $('.controls').fadeOut(250);
-    if (controlsTO) clearTimeout(controlsTO);
-    controlsTO = setTimeout(function() {
-      $('.controls').fadeIn(500);
-    }, 10 * 1000);
   }
 
   function scrollToSlide(index, speed) {
