@@ -34,7 +34,7 @@ $(document).ready(function(){
 
 
 	slideLoop("slide-2");
-	slideLoop("slide-9");
+	slideLoop("slide-9", 5000);
 
 
   // set up slides / backgrounds

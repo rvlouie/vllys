@@ -1,4 +1,4 @@
-function slideLoop(slideId) {
+function slideLoop(slideId, interval) {
 
   var $images = $("#" + slideId +" img.carousel-image");
   var currentIndex
@@ -25,7 +25,7 @@ function slideLoop(slideId) {
     if (slideInterval) {
       clearInterval(slideInterval);
     };
-    slideInterval = setInterval(nextImage, 3000);
+    slideInterval = setInterval(nextImage, interval || 3000);
   }
   
   function stopCarousel() { 
