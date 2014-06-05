@@ -193,8 +193,9 @@ li {
 }
 
 
-.container p {
-	font-size: 30px;
+.container p,
+.container li {
+	font-size: 20px;
   line-height: 1.35em;
 }
 
@@ -202,25 +203,16 @@ li {
 	margin: 20px 0 10px;
 }
 
-.container li {
-  font-size: 26px;
-}
-
 .container .highlight {
 	color: white;
 	background-color: #1d7db3;
-	padding: 0 9px;
+	padding: 2px 4px;
   white-space: nowrap;
-}
-
-.container .bold-text {
-	font-size: 36px;
-	font-weight: bold;
 }
 
 .container .blue-text {
 	color: #1d7db3;
-  font-size: 38px;
+  font-size: 25px;
   line-height: 1.35em;
 }
 
@@ -228,13 +220,25 @@ li {
   margin-top: 12px;
 }
 
+.container .bold-text {
+	font-weight: bold;
+}
+
+.container .bold-text {
+	font-size: 21px;
+}
+
+.container .blue-text.bold-text {
+	font-size: 26px;
+}
+
 .container blockquote {
-	font-size: 28px;
+	font-size: 24px;
 	margin-top: 40px;
 }
 
 .container blockquote small {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .container table {
@@ -296,16 +300,16 @@ li {
 .management-team .bio p {
 	float: left;
 	margin: 0;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .management-team .bio .tag {
 	clear: both;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .management-team .bio .blue-text {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 .management-team .bio img {
@@ -373,14 +377,16 @@ li {
 	display: block;
 	position: absolute;
   z-index: 1;
-	background-color: #1d7db3;
+	background-color: rgba(29, 125, 179, 0.65);
+  box-shadow: 0 -4px 12px -3px rgb(0, 0, 0);
 	bottom: 0;
-  height: 60px;
 	width: 100%;
-	padding: 10px;
-	color: #DDD;
+	padding: 8px 10px;
+	color: #FFF;
+  text-shadow: 1px 1px #000;
 	text-decoration: none;
-	font-size: 14px;
+	font-size: 18px;
+  line-height: 1.3em;
 }
 
 .links .link-box:hover {
@@ -389,35 +395,44 @@ li {
 }
 
 .links .link-box:hover span {
-  color: #FFF;
-  text-shadow: 1px 1px #000;
+	background-color: rgba(29, 125, 179, 0.9);
+  box-shadow: none;
 }
 
 
-@media (max-width: 1600px) {
+@media (min-width: 1600px) {
 
-  .container p {
-    font-size: 24px;
+  .container p,
+  .container li {
+    font-size: 26px;
   }
 
   .container .blue-text {
     font-size: 30px;
   }
 
-  .container li {
+  .container .bold-text {
+    font-size: 27px;
+  } 
+  
+  .container .bold-text.blue-text {
+    font-size: 31px;
+  } 
+
+  .management-team .bio p {
     font-size: 20px;
   }
 
-  .bold-text {
-    font-size: 24px;
+  .management-team .bio .tag {
+    font-size: 22px;
   }
 
-  .container .bio p {
-    font-size: 18px;
+  .management-team .bio .blue-text {
+    font-size: 28px;
   }
 
-  .container .link-position a {
-    font-size: 15px;
+  .links .link-box span {
+    font-size: 22px;
   }
 
 }
@@ -435,28 +450,33 @@ li {
     margin-top: 200px !important;
   } 
 
-  .container p {
+  .container p,
+  .container li {
     font-size: 18px;
   }
 
   .container .blue-text {
     font-size: 22px;
   }
-
-  .container li {
-    font-size: 14px;
+  
+  .container .bold-text {
+    font-size: 19px;
   }
 
-  .bold-text {
+  .container .bold-text.blue-text {
+    font-size: 23px;
+  }
+
+  .management-team .bio p {
+    font-size: 15px;
+  }
+
+  .management-team .bio .tag {
     font-size: 16px;
   }
 
-  .container .bio p {
-    font-size: 12px;
-  }
-
-  .container .link-position a {
-    font-size: 11px;
+  .management-team .bio .blue-text {
+    font-size: 20px;
   }
 
   .slide .container table td {
@@ -481,8 +501,44 @@ li {
     margin-top: 40px;
   } 
 
-  .links .link-position {
-    width: 95%;
-  }  
 
+  .slide .links table {
+    height: auto;
+  }
+
+  .slide .links table tr {
+    display: block;
+  }
+  
+  .slide .links table tr + tr {
+    margin-top: 10px;
+  }
+  
+  .slide .links table td.spacer {
+    display: none;
+  }
+
+  .links .link-block {
+    height: 100px;
+    padding-top: 0 !important;
+  }
+
+  .links .link-box {
+    background-size: 100px 100px;
+    background-position: top left;
+    border: 0 none;
+  } 
+  
+  .links .link-box span {
+    position: absolute;
+    background: rgb(29, 125, 179);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 102px;
+    width: auto;
+    padding: 15px 20px;
+    box-shadow: none;
+    font-size: 20px;
+  }	
 }
