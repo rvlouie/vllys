@@ -113,7 +113,7 @@ $(document).ready(function(){
   function updateSlideIndicator() {
     $('.slide-indicator').finish();
     $('.slide-indicator').text( (currentSlideIndex + 1) + " / " + slides.length );
-    $('.slide-indicator').delay(250).fadeIn(1500).delay(2000).fadeOut(1500);
+    $('.slide-indicator').delay(250).fadeIn(1000).delay(500).fadeOut(1500);
   }
 
   var updateSlideIndicatorDebounced = _.debounce(updateSlideIndicator, 300, true);
