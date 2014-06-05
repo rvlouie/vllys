@@ -20,7 +20,9 @@ $(document).ready(function(){
     , tempNode
 
     , controlsReady = false
-    , controlsTO;
+    , controlsTO
+
+    , documentTitle = $('title').text();
 
   
   currentSlideIndex = (function(){
@@ -154,6 +156,11 @@ $(document).ready(function(){
         complete: function() {
           if ($prevSlide) $prevSlide.trigger('leave');
           $currentSlide.trigger('enter');
+          if ($currentSlide.attr('title')) {
+            $('title').text( $currentSlide.attr('title') + ' : ' + documentTitle );
+          } else {
+            $('title').text( documentTitle );
+          }
           updateSlideIndicatorDebounced();
           animatingTO = setTimeout(function() {
             isAnimating = false;
