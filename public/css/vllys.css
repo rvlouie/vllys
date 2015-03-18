@@ -1,0 +1,25 @@
+body {
+  background: url('../assets/vllys.gif') fixed no-repeat center;
+  background-size: cover;
+}
+
+.vllys-container {
+  padding: 50px;
+  position: relative;
+}
+
+.logo {
+  float: right;
+}
+
+.centered {
+  position: absolute;
+  margin: auto;
+  height: 50%;
+  width: 50%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
